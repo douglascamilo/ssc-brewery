@@ -14,7 +14,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 
-abstract class BaseIT {
+public abstract class BaseIT {
 
     @Autowired
     WebApplicationContext context;
@@ -34,7 +34,7 @@ abstract class BaseIT {
     @MockBean
     BeerService beerService;
 
-    MockMvc mockMvc;
+    protected MockMvc mockMvc;
 
     @BeforeEach
     void setUp() {
