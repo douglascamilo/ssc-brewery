@@ -25,4 +25,11 @@ class BeerRestControllerIT extends BaseIT {
                 .andExpect(status().isOk());
     }
 
+    @Test
+    @SneakyThrows
+    void should_find_beer_by_upc() {
+        mockMvc.perform(get("/api/v1/beerUpc/123"))
+                .andExpect(status().isOk());
+    }
+
 }
