@@ -34,7 +34,8 @@ class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
                 .withUser(build("spring", "guru", "ADMIN"))
-                .withUser(build("user", "password", "USER"));
+                .withUser(build("user", "password", "USER"))
+                .withUser(build("scott", "tiger", "CUSTOMER"));
     }
 
 }
