@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 class UserDetailsUtils {
 
     static UserDetails build(String username, String password, String... roles) {
-        return User.withDefaultPasswordEncoder()
+        return User.builder()
                 .username(username)
                 .password(password)
                 .roles(roles)

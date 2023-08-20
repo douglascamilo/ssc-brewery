@@ -1,6 +1,7 @@
 package guru.sfg.brewery.web.controllers;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.security.crypto.password.LdapShaPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.util.DigestUtils;
 
@@ -32,4 +33,14 @@ class PasswordEncodingTest {
 
         assertThat(hashedPassword).isEqualTo("b177e1b7fab112477a6b1754caa9ef06");
     }
+
+    @Test
+    void ldap_hashing_example() {
+        var passwordEncoder = new LdapShaPasswordEncoder();
+        var encodedPassword = passwordEncoder.encode(PASSWORD);
+
+        System.out.println(encodedPassword);
+        assertThat(passwordEncoder.matches(PASSWORD, encodedPassword)).isTrue();
+    }
+
 }

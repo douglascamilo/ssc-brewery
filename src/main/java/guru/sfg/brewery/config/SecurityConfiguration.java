@@ -1,10 +1,13 @@
 package guru.sfg.brewery.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.password.LdapShaPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import static guru.sfg.brewery.config.UserDetailsUtils.build;
 import static org.springframework.http.HttpMethod.GET;
@@ -13,10 +16,10 @@ import static org.springframework.http.HttpMethod.GET;
 @EnableWebSecurity
 class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-//    @Bean
-//    PasswordEncoder passwordEncoder() {
-//        return NoOpPasswordEncoder.getInstance();
-//    }
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new LdapShaPasswordEncoder();
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -39,8 +42,9 @@ class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
                 .withUser(build("spring", "guru", "ADMIN"))
-                .withUser(build("user", "password", "USER"))
-                .withUser(build("scott", "tiger", "CUSTOMER"));
+                .withUser(build("user", "{SSHA}w5MHMUPBjGeEUTiP+hOocWUxPZr55CeIR72qcg==", "USER"))
+                .withUser(build("scott", "{SSHA}OrEXghUwoliDCUhUx3g0Hpjfi3yOh1pXPZ8vjQ==", "CUSTOMER"))
+        ;
     }
 
 }
