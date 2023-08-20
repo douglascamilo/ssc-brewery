@@ -8,7 +8,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest
-class IndexControllerIT extends BaseIT {
+class IndexControllerIntegrationTest extends BaseIT {
 
     @Test
     @SneakyThrows

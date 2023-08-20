@@ -10,7 +10,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest
-class BeerControllerIT extends BaseIT {
+class BeerControllerIntegrationTest extends BaseIT {
 
     @Test
     @SneakyThrows
