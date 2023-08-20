@@ -13,6 +13,11 @@ import static org.springframework.http.HttpMethod.GET;
 @EnableWebSecurity
 class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+//    @Bean
+//    PasswordEncoder passwordEncoder() {
+//        return NoOpPasswordEncoder.getInstance();
+//    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http

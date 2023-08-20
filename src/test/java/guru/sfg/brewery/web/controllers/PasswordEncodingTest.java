@@ -1,6 +1,7 @@
 package guru.sfg.brewery.web.controllers;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.util.DigestUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -8,6 +9,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 class PasswordEncodingTest {
 
     static final String PASSWORD = "password";
+
+    @Test
+    void no_op_example() {
+        var passwordEncoder = NoOpPasswordEncoder.getInstance();
+        var encodedPassword = passwordEncoder.encode(PASSWORD);
+
+        assertThat(encodedPassword).isEqualTo(PASSWORD);
+    }
 
     @Test
     void md5_hashing_example() {
